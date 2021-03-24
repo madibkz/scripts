@@ -1,7 +1,7 @@
 #!/bin/bash
 
 slowdownrate="70"
-suffix="-slowed.mp3"
+filetype=".mp3"
 
 if [ -n "${1+set}" ]
 then
@@ -12,6 +12,6 @@ detox ./ #remove spaces / bad characters in file names
 
 for f in $(ls);
 do
-  ffmpeg -i "$f" "$f$suffix" ; #use ffmpeg to convert the file to mp3
-  ecasound -i "$f$suffix" -ei:$slowdownrate -o "$f$suffix" ; # replace with slowed file
+  ffmpeg -i "$f" "$f$filetype" ; #use ffmpeg to convert the file to mp3
+  ecasound -i "$f$filetype" -ei:$slowdownrate -o "$f-slowed$filetype" ; # replace with slowed file
 done ;
